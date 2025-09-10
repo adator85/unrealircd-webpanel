@@ -18,7 +18,7 @@ if (!empty($_POST))
 				$tok = split($value, ",");
 				$iphost = base64_decode($tok[0]);
 				$success = false;
-				$username = ($user = unreal_get_current_user())) ? $user->username : NULL
+				$username = ($user = unreal_get_current_user())) ? $user->username : NULL;
 				$success = $rpc->serverbanexception()->delete($iphost, $username);
 
 
