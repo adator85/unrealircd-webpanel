@@ -18,11 +18,12 @@ if (!empty($_POST))
 				$tok = split($value, ",");
 				$iphost = base64_decode($tok[0]);
 				$success = false;
-				$success = $rpc->serverbanexception()->delete($iphost);
+				$username = ($user = unreal_get_current_user())) ? $user->username : NULL
+				$success = $rpc->serverbanexception()->delete($iphost, $username);
 
 
 				if ($success)
-					Message::Success("Ban Exception has been removed for $iphost");
+					Message::Success("Ban Exception has been removed by $username for $iphost");
 				else
 					Message::Fail("Unable to remove Ban Exception on $iphost: $rpc->error");
 			}
